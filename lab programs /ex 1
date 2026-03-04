@@ -1,0 +1,33 @@
+# List of item prices
+prices = [50, 30, 20]   # Example prices of items
+
+# Corresponding quantities
+quantities = [2, 3, 1]  # Example quantities purchased
+
+# Discount and tax rates (in percentage)
+discount_rate = 10   # 10% discount
+tax_rate = 5         # 5% tax
+
+# Step 1: Calculate total cost before discount and tax
+total = 0
+for i in range(len(prices)):
+    total += prices[i] * quantities[i]
+
+# Step 2: Calculate discount amount
+discount_amount = total * (discount_rate / 100)
+
+# Step 3: Subtract discount from total
+total_after_discount = total - discount_amount
+
+# Step 4: Calculate tax on discounted amount
+tax_amount = total_after_discount * (tax_rate / 100)
+
+# Step 5: Calculate final total cost
+final_total = total_after_discount + tax_amount
+
+# Display results
+print("Total before discount and tax:", total)
+print("Discount amount:", discount_amount)
+print("Total after discount:", total_after_discount)
+print("Tax amount:", tax_amount)
+print("Final total cost:", final_total)
