@@ -1,0 +1,19 @@
+import pandas as pd
+
+# Create sample sales_data DataFrame
+data = {
+    "Product": ["Laptop", "Mobile", "Tablet", "Headphones"],
+    "Price": [50000, 20000, 30000, 2000],
+    "Quantity": [5, 10, 7, 20]
+}
+
+sales_data = pd.DataFrame(data)
+
+print("Original Sales Data:\n")
+print(sales_data)
+
+# Calculate Total Sales
+sales_data["Total Sales"] = sales_data["Price"] * sales_data["Quantity"]
+
+print("\nSales Data with Total Sales Column:\n")
+print(sales_data)
