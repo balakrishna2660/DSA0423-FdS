@@ -1,0 +1,28 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+temperature = np.array([22, 24, 28, 32, 35, 38, 40, 39, 36, 30, 26, 23])
+rainfall = np.array([15, 20, 10, 5, 8, 12, 120, 150, 130, 90, 40, 20])
+
+plt.figure(figsize=(8, 5))
+plt.plot(months, temperature, marker='o')
+plt.title("Monthly Temperature Variation")
+plt.xlabel("Month")
+plt.ylabel("Temperature (°C)")
+plt.xticks(rotation=45)
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(8, 5))
+plt.scatter(months, rainfall)
+plt.title("Monthly Rainfall Distribution")
+plt.xlabel("Month")
+plt.ylabel("Rainfall (mm)")
+plt.xticks(rotation=45)
+plt.grid(True)
+plt.tight_layout()
+plt.show()
