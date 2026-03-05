@@ -1,0 +1,35 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+
+data = {
+    "Customer_ID": [1,2,3,4,5,6,7,8,9,10],
+    "Total_Spent": [250, 800, 150, 1200, 300, 950, 400, 1100, 200, 700],
+    "Visit_Frequency": [5, 15, 3, 20, 6, 18, 8, 22, 4, 14]
+}
+
+df = pd.DataFrame(data)
+
+X = df[["Total_Spent", "Visit_Frequency"]]
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+kmeans = KMeans(n_clusters=3, random_state=42)
+df["Cluster"] = kmeans.fit_predict(X_scaled)
+
+print("Customer Segments:")
+print(df)
+
+plt.figure()
+plt.scatter(df["Total_Spent"], df["Visit_Frequency"], c=df["Cluster"])
+plt.xlabel("Total Amount Spent")
+plt.ylabel("Visit Frequency")
+plt.title("Customer Segmentation using K-Means")
+plt.show()
+
+centroids = scaler.inverse_transform(kmeans.cluster_centers_)
+print("\nCluster Centroids (Original Scale):")
+print(pd.DataFrame(centroids, columns=["Total_Spent", "Visit_Frequency"]))
